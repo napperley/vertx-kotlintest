@@ -45,8 +45,8 @@ dependencies {
     compile("io.vertx:vertx-core:$VERTX_VER")
     compile("io.vertx:vertx-web-client:$VERTX_VER")
     compile("io.kotlintest:kotlintest:$KOTLIN_TEST_VER")
+    compile("io.vertx:vertx-unit:$VERTX_VER")
     testCompile("io.vertx:vertx-lang-kotlin:$VERTX_VER")
-    testCompile("io.vertx:vertx-unit:$VERTX_VER")
     testCompile("io.vertx:vertx-web:$VERTX_VER")
 }
 

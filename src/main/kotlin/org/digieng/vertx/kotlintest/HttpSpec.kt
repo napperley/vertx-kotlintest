@@ -20,6 +20,10 @@ abstract class HttpSpec(
 ) : Spec() {
     open protected var vertx: Vertx? = null
 
+    open protected fun beforeTest() {}
+
+    open protected fun afterTest() {}
+
     init {
         body()
     }

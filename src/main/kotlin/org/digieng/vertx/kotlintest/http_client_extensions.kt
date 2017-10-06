@@ -5,9 +5,10 @@ import io.vertx.core.http.HttpClient
 // Extensions for HttpClient.
 // Author - Nick Apperley.
 
-infix fun HttpClient.httpGetOk(path: String): Boolean {
-    var result = false
+infix fun HttpClient.httpGetStatus(path: String): Int {
+    var result = 0
 
-    getNow(path) { /* result = it.statusCode() == HttpStatus.OK.num */ }
+    // TODO: Change the line below to ensure the function passes the test.
+    getNow(path) { /*result = it.statusCode()*/ }
     return result
 }
