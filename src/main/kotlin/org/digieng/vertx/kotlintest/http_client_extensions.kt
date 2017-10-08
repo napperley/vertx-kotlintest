@@ -8,7 +8,41 @@ import io.vertx.core.http.HttpClient
 infix fun HttpClient.httpGetStatus(path: String): Int {
     var result = 0
 
-    // TODO: Change the line below to ensure the function passes the test.
-    getNow(path) { /*result = it.statusCode()*/ }
+    getNow(path) {
+        result = it.statusCode()
+    }
+    return result
+}
+
+infix fun HttpClient.httpPostStatus(args: Pair<String, String>): Int {
+    var result = 0
+    val reqUrl = args.first
+    val data = args.second
+
+    post(reqUrl) {
+        /* result = it.statusCode() */
+    }.end(data)
+    return result
+}
+
+infix fun HttpClient.httpPutStatus(args: Pair<String, String>): Int {
+    var result = 0
+    val reqUrl = args.first
+    val data = args.second
+
+    put(reqUrl) {
+        /* result = it.statusCode() */
+    }.end(data)
+    return result
+}
+
+infix fun HttpClient.httpDeleteStatus(args: Pair<String, String>): Int {
+    var result = 0
+    val reqUrl = args.first
+    val data = args.second
+
+    delete(reqUrl) {
+        /* result = it.statusCode() */
+    }.end(data)
     return result
 }

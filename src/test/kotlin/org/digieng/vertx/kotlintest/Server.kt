@@ -2,6 +2,7 @@ package org.digieng.vertx.kotlintest
 
 import io.vertx.core.AbstractVerticle
 import io.vertx.ext.web.Router
+import io.vertx.ext.web.RoutingContext
 import io.vertx.kotlin.core.http.HttpServerOptions
 
 /**
@@ -20,13 +21,18 @@ class Server : AbstractVerticle() {
     }
 
     private fun setupRoutes(router: Router) {
+        router.get("/status").handler(statusRouteHandler())
+        router.delete("/status").handler(statusRouteHandler())
+        router.put("/status").handler(statusRouteHandler())
+        router.post("/status").handler(statusRouteHandler())
+    }
+
+    private fun statusRouteHandler() = { ctx: RoutingContext ->
         val httpOk = 200
 
-        router.get("/status").handler { ctx ->
-            with(ctx.response()) {
-                statusCode = httpOk
-                end()
-            }
+        with(ctx.response()) {
+            statusCode = httpOk
+            end()
         }
     }
 

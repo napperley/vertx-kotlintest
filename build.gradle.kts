@@ -1,10 +1,13 @@
 @file:Suppress("PropertyName")
 
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import org.jetbrains.kotlin.gradle.dsl.Coroutines
+import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val VERTX_VER = "3.4.2"
 val KOTLIN_TEST_VER = "2.0.6"
+val KOTLINX_COROUTINES_VER = "0.19"
 
 group = "org.digieng"
 version = "0.1-SNAPSHOT"
@@ -31,6 +34,10 @@ plugins {
     application
 }
 
+configure<KotlinProjectExtension> {
+    experimental.coroutines = Coroutines.ENABLE
+}
+
 repositories {
     jcenter()
     mavenCentral()
@@ -48,6 +55,7 @@ dependencies {
     compile("io.vertx:vertx-unit:$VERTX_VER")
     testCompile("io.vertx:vertx-lang-kotlin:$VERTX_VER")
     testCompile("io.vertx:vertx-web:$VERTX_VER")
+    testCompile("org.jetbrains.kotlinx:kotlinx-coroutines-core:$KOTLINX_COROUTINES_VER")
 }
 
 val compileKotlin by tasks.getting(KotlinCompile::class) {
